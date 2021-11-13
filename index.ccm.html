@@ -645,7 +645,6 @@
 
 
         <!-- javascript libraries -->
-            <script defer src="./bundles/bundle.js"></script>
 
         <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
         <!-- <script type="text/javascript" src="js/jquery.appear.js"></script> -->
@@ -676,24 +675,28 @@
         <!-- main -->
         <!-- <script type="text/javascript" src="js/main.js"></script> -->
     
+        <!-- <script src="./bundles/bundle.js"></script> -->
+
         <script>
             // custom js
             
-            // document.onreadystatechange = function () {
-                //     if (document.readyState === 'interactive') {
-                    //     }
-                    // }
+            function loadScript(){
+                    const script = document.createElement('script')
+        
+                    script.async = true
+                    script.src = 'bundles/bundle.js';
+        
+                    document.head.appendChild(script);
+                }
+            document.onreadystatechange = function () {
+                    if (document.readyState === 'interactive') {
+                        loadScript()
+                        }
+                    }
+
+
             window.onload = function() {
-                    // function loadScript(){
-                    //         const script = document.createElement('script')
-                
-                    //         script.async = true
-                    //         script.src = 'bundles/bundle.js';
-                
-                    //         document.head.appendChild(script);
-                    //     }
                     
-                    // loadScript()
 
                     function loadCSS(src){
 
