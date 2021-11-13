@@ -675,103 +675,112 @@
         <!-- main -->
         <!-- <script type="text/javascript" src="js/main.js"></script> -->
     
-        <!-- <script src="./bundles/bundle.js"></script> -->
+        <script async src="./bundles/bundle.js"></script>
 
         <script>
             // custom js
             
-            function loadScript(){
-                    const script = document.createElement('script')
+            // function loadScript(){
+            //         const script = document.createElement('script')
         
-                    script.async = true
-                    script.src = 'bundles/bundle.js';
+            //         script.async = true
+            //         script.src = 'bundles/bundle.js';
         
-                    document.head.appendChild(script);
-                }
-            document.onreadystatechange = function () {
-                    if (document.readyState === 'interactive') {
-                        loadScript()
+            //         document.head.appendChild(script);
+            //     }
+            // document.onreadystatechange = function () {
+            //         if (document.readyState === 'interactive') {
+            //             loadScript()
+            //             }
+            //         }
+
+                    document.onreadystatechange = function () {
+                    if (document.readyState === 'complete') {
+                        function loadCSS(src){
+        
+                                var link = document.createElement("link");
+                                link.setAttribute("rel", "stylesheet");
+                                link.setAttribute("type", "text/css");
+                                link.setAttribute("href", src);
+                                document.head.appendChild(link);
+        
                         }
-                    }
-
-
-            window.onload = function() {
-                    
-
-                    function loadCSS(src){
-
-                            var element = document.createElement("link");
-                            element.setAttribute("rel", "stylesheet");
-                            element.setAttribute("type", "text/css");
-                            element.setAttribute("href", src);
-                            document.getElementsByTagName("head")[0].appendChild(element);
-
-                    }
-
-                    loadCSS('bundles/css/fonts.css')
-
-
-                    // Lazy Loading Images
-                    const lazyloadImages = document.querySelectorAll(".lazy");
-
-                    const imageObserver = new IntersectionObserver(function(entries, observer) {
-                        entries.forEach(function(entry) {
-                            if (entry.isIntersecting) {
-                            const image = entry.target;
-                            image.src = image.dataset.src;
-                            image.classList.remove("lazy");
-                            imageObserver.unobserve(image);
-                            }
-                        });
-                        });
-
-                        lazyloadImages.forEach(function(image) {
-                        imageObserver.observe(image);
-                    });
-
-
-                        // Lazy Loading Iframes
-                        const lazyloadIframes = document.querySelectorAll("iframe");
-
-
-                        const iframeObserver = new IntersectionObserver(function(entries, observer) {
-                            entries.forEach(function(entry) {
-                                if (entry.isIntersecting) {
-                                const iframe = entry.target;
-                                iframe.src = iframe.dataset.src;
-                                iframe.classList.remove("lazy");
-                                iframeObserver.unobserve(iframe);
-                                }
-                            });
-                            });
-
-                            lazyloadIframes.forEach(function(iframe) {
-                                iframeObserver.observe(iframe);
-                        });
-
-                            // Lazy Loading BGImages
-                            const lazyloadBGImages = document.querySelectorAll(".lazy-bg");
-
-
-                            const BGImagesObserver = new IntersectionObserver(function(entries, observer) {
+                 
+                        // window.onload = function() {
+        
+                            
+        
+        
+                            loadCSS('bundles/css/fonts.css')
+        
+        
+                            // Lazy Loading Images
+                            const lazyloadImages = document.querySelectorAll(".lazy");
+        
+                            const imageObserver = new IntersectionObserver(function(entries, observer) {
                                 entries.forEach(function(entry) {
                                     if (entry.isIntersecting) {
-                                    const bgImge = entry.target;
-
-                                    bgImge.style = bgImge.dataset.style;
-                                    bgImge.classList.remove("lazy-bg");
-                                    
-                                    BGImagesObserver.unobserve(bgImge);
+                                    const image = entry.target;
+                                    image.src = image.dataset.src;
+                                    image.classList.remove("lazy");
+                                    imageObserver.unobserve(image);
                                     }
                                 });
-                                },{
-                                    threshold: .1
                                 });
-
-                                lazyloadBGImages.forEach(function(bgImges) {
-                                    BGImagesObserver.observe(bgImges);
+        
+                                lazyloadImages.forEach(function(image) {
+                                imageObserver.observe(image);
                             });
-                }
+        
+        
+                                // Lazy Loading Iframes
+                                const lazyloadIframes = document.querySelectorAll("iframe");
+        
+        
+                                const iframeObserver = new IntersectionObserver(function(entries, observer) {
+                                    entries.forEach(function(entry) {
+                                        if (entry.isIntersecting) {
+                                        const iframe = entry.target;
+                                        iframe.src = iframe.dataset.src;
+                                        iframe.classList.remove("lazy");
+                                        iframeObserver.unobserve(iframe);
+                                        }
+                                    });
+                                    });
+        
+                                    lazyloadIframes.forEach(function(iframe) {
+                                        iframeObserver.observe(iframe);
+                                });
+        
+                                    // Lazy Loading BGImages
+                                    const lazyloadBGImages = document.querySelectorAll(".lazy-bg");
+        
+        
+                                    const BGImagesObserver = new IntersectionObserver(function(entries, observer) {
+                                        entries.forEach(function(entry) {
+                                            if (entry.isIntersecting) {
+                                            const bgImge = entry.target;
+        
+                                            bgImge.style = bgImge.dataset.style;
+                                            bgImge.classList.remove("lazy-bg");
+                                            
+                                            BGImagesObserver.unobserve(bgImge);
+                                            }
+                                        });
+                                        },{
+                                            threshold: .1
+                                        });
+        
+                                        lazyloadBGImages.forEach(function(bgImges) {
+                                            BGImagesObserver.observe(bgImges);
+                                    });
+                        }
+                
+                 
+                    }
+                // }
+         
+        
         </script>
 
     </body>
