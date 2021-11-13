@@ -51,7 +51,6 @@
         <!-- <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:400' crossorigin="anonymous" media="print" onload="this.media='all'" />
         <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat:400' crossorigin="anonymous" media="print" onload="this.media='all'" /> -->
         
-        <link rel="preload" as="script" href="bundles/bundle.js">
 
         <!--[if IE 9]>
         <link rel="stylesheet" type="text/css" href="css/ie.css" />
@@ -656,7 +655,7 @@
 
 
         <!-- javascript libraries -->
-            <script src="./bundles/bundle.js"></script>
+            <!-- <script src="./bundles/bundle.js"></script> -->
 
         <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
         <!-- <script type="text/javascript" src="js/jquery.appear.js"></script> -->
@@ -689,8 +688,24 @@
     
         <script>
             // custom js
+            function loadScript(){
+                    const script = document.createElement('script')
+        
+                    script.async = true
+                    script.src = 'bundles/bundle.js';
+        
+                    document.head.appendChild(script);
+                }
+        
+                document.onreadystatechange = function () {
+                    if (document.readyState === 'interactive') {
+                        loadScript()
+                    }
+                }
 window.onload = function() {
 
+
+        
 // Lazy Loading Images
 const lazyloadImages = document.querySelectorAll(".lazy");
 
