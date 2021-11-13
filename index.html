@@ -42,14 +42,14 @@
         <!-- elements -->
         <!-- <link rel="stylesheet" href="bundles/css/bundles.css" media="print" onload="this.media='all'">
         <link rel="stylesheet" href="bundles/css/custom.css" media="print" onload="this.media='all'"> -->
-        <link rel="stylesheet" href="bundles/css/bundles.css">
+        <link rel="stylesheet" href="bundles/css/bundles.min.css">
         <!-- <link rel="stylesheet" href="bundles/css/custom.css"> -->
         <!-- <link rel="stylesheet" href="css/elements.css" /> -->
         <!-- responsive -->
         <!-- <link rel="stylesheet" href="css/responsive.css" /> -->
         
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com/"> -->
         <!-- <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:400' crossorigin="anonymous" media="print" onload="this.media='all'" />
         <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Montserrat:400' crossorigin="anonymous" media="print" onload="this.media='all'" /> -->
         
@@ -707,17 +707,17 @@
                     
                     loadScript()
 
-                    // function loadCSS(src){
+                    function loadCSS(src){
 
-                    //         var element = document.createElement("link");
-                    //         element.setAttribute("rel", "stylesheet");
-                    //         element.setAttribute("type", "text/css");
-                    //         element.setAttribute("href", src);
-                    //         document.getElementsByTagName("head")[0].appendChild(element);
+                            var element = document.createElement("link");
+                            element.setAttribute("rel", "stylesheet");
+                            element.setAttribute("type", "text/css");
+                            element.setAttribute("href", src);
+                            document.getElementsByTagName("head")[0].appendChild(element);
 
-                    // }
+                    }
 
-                    // loadCSS('css/fonts.css')
+                    loadCSS('bundles/css/fonts.css')
 
 
                     // Lazy Loading Images
