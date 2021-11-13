@@ -677,111 +677,101 @@
     
         <script async src="./bundles/bundle.js"></script>
 
-        <script>
-            // custom js
-            
-            // function loadScript(){
-            //         const script = document.createElement('script')
         
+        <!-- // function loadScript(){
+            //         const script = document.createElement('script')
+            
             //         script.async = true
             //         script.src = 'bundles/bundle.js';
-        
+            
             //         document.head.appendChild(script);
             //     }
             // document.onreadystatechange = function () {
-            //         if (document.readyState === 'interactive') {
-            //             loadScript()
-            //             }
-            //         }
-
+                //         if (document.readyState === 'interactive') {
+                    //             loadScript()
+                    //             }
+                    //         } -->
+                    
+                    <!-- // custom js -->
+                <script>
                     document.onreadystatechange = function () {
                     if (document.readyState === 'complete') {
-                        function loadCSS(src){
-        
+
+                        
                                 var link = document.createElement("link");
                                 link.setAttribute("rel", "stylesheet");
                                 link.setAttribute("type", "text/css");
-                                link.setAttribute("href", src);
+                                link.setAttribute("href", "bundles/css/fonts.css");
                                 document.head.appendChild(link);
         
-                        }
-                 
-                        // window.onload = function() {
-        
-                            
-        
-        
-                            loadCSS('bundles/css/fonts.css')
-        
-        
-                            // Lazy Loading Images
-                            const lazyloadImages = document.querySelectorAll(".lazy");
-        
-                            const imageObserver = new IntersectionObserver(function(entries, observer) {
-                                entries.forEach(function(entry) {
-                                    if (entry.isIntersecting) {
+                         
+                        
+                        // Lazy Loading Images
+                        const lazyloadImages = document.querySelectorAll(".lazy");
+                        
+                        const imageObserver = new IntersectionObserver(function(entries, observer) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
                                     const image = entry.target;
                                     image.src = image.dataset.src;
                                     image.classList.remove("lazy");
                                     imageObserver.unobserve(image);
-                                    }
-                                });
-                                });
-        
-                                lazyloadImages.forEach(function(image) {
-                                imageObserver.observe(image);
+                                }
                             });
-        
-        
-                                // Lazy Loading Iframes
-                                const lazyloadIframes = document.querySelectorAll("iframe");
-        
-        
-                                const iframeObserver = new IntersectionObserver(function(entries, observer) {
-                                    entries.forEach(function(entry) {
-                                        if (entry.isIntersecting) {
-                                        const iframe = entry.target;
-                                        iframe.src = iframe.dataset.src;
-                                        iframe.classList.remove("lazy");
-                                        iframeObserver.unobserve(iframe);
-                                        }
-                                    });
-                                    });
-        
-                                    lazyloadIframes.forEach(function(iframe) {
-                                        iframeObserver.observe(iframe);
-                                });
-        
-                                    // Lazy Loading BGImages
-                                    const lazyloadBGImages = document.querySelectorAll(".lazy-bg");
-        
-        
-                                    const BGImagesObserver = new IntersectionObserver(function(entries, observer) {
-                                        entries.forEach(function(entry) {
-                                            if (entry.isIntersecting) {
-                                            const bgImge = entry.target;
-        
-                                            bgImge.style = bgImge.dataset.style;
-                                            bgImge.classList.remove("lazy-bg");
-                                            
-                                            BGImagesObserver.unobserve(bgImge);
-                                            }
-                                        });
-                                        },{
-                                            threshold: .1
-                                        });
-        
-                                        lazyloadBGImages.forEach(function(bgImges) {
-                                            BGImagesObserver.observe(bgImges);
-                                    });
-                        }
-                
-                 
+                        });
+                        
+                        lazyloadImages.forEach(function(image) {
+                            imageObserver.observe(image);
+                        });
+                        
+                        
+                        // Lazy Loading Iframes
+                        const lazyloadIframes = document.querySelectorAll("iframe");
+                        
+                        
+                        const iframeObserver = new IntersectionObserver(function(entries, observer) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
+                                    const iframe = entry.target;
+                                    iframe.src = iframe.dataset.src;
+                                    iframe.classList.remove("lazy");
+                                    iframeObserver.unobserve(iframe);
+                                }
+                            });
+                        });
+                        
+                        lazyloadIframes.forEach(function(iframe) {
+                            iframeObserver.observe(iframe);
+                        });
+                        
+                        // Lazy Loading BGImages
+                        const lazyloadBGImages = document.querySelectorAll(".lazy-bg");
+                        
+                        
+                        const BGImagesObserver = new IntersectionObserver(function(entries, observer) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
+                                    const bgImge = entry.target;
+                                    
+                                    bgImge.style = bgImge.dataset.style;
+                                    bgImge.classList.remove("lazy-bg");
+                                    
+                                    BGImagesObserver.unobserve(bgImge);
+                                }
+                            });
+                        },{
+                            threshold: .1
+                        });
+                        
+                        lazyloadBGImages.forEach(function(bgImges) {
+                            BGImagesObserver.observe(bgImges);
+                        });
                     }
-                // }
-         
-        
-        </script>
+                    
+                    
+                }
+               
+                </script>
 
     </body>
 </html>
