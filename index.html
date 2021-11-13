@@ -688,85 +688,97 @@
     
         <script>
             // custom js
-            function loadScript(){
-                    const script = document.createElement('script')
-        
-                    script.async = true
-                    script.src = 'bundles/bundle.js';
-        
-                    document.head.appendChild(script);
+            
+            // document.onreadystatechange = function () {
+                //     if (document.readyState === 'interactive') {
+                    //     }
+                    // }
+            window.onload = function() {
+                    function loadScript(){
+                            const script = document.createElement('script')
+                
+                            script.async = true
+                            script.src = 'bundles/bundle.js';
+                
+                            document.head.appendChild(script);
+                        }
+                    
+                    loadScript()
+
+                    // function loadCSS(src){
+
+                    //         var element = document.createElement("link");
+                    //         element.setAttribute("rel", "stylesheet");
+                    //         element.setAttribute("type", "text/css");
+                    //         element.setAttribute("href", src);
+                    //         document.getElementsByTagName("head")[0].appendChild(element);
+
+                    // }
+
+                    // loadCSS('css/fonts.css')
+
+
+                    // Lazy Loading Images
+                    const lazyloadImages = document.querySelectorAll(".lazy");
+
+                    const imageObserver = new IntersectionObserver(function(entries, observer) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                            const image = entry.target;
+                            image.src = image.dataset.src;
+                            image.classList.remove("lazy");
+                            imageObserver.unobserve(image);
+                            }
+                        });
+                        });
+
+                        lazyloadImages.forEach(function(image) {
+                        imageObserver.observe(image);
+                    });
+
+
+                        // Lazy Loading Iframes
+                        const lazyloadIframes = document.querySelectorAll("iframe");
+
+
+                        const iframeObserver = new IntersectionObserver(function(entries, observer) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
+                                const iframe = entry.target;
+                                iframe.src = iframe.dataset.src;
+                                iframe.classList.remove("lazy");
+                                iframeObserver.unobserve(iframe);
+                                }
+                            });
+                            });
+
+                            lazyloadIframes.forEach(function(iframe) {
+                                iframeObserver.observe(iframe);
+                        });
+
+                            // Lazy Loading BGImages
+                            const lazyloadBGImages = document.querySelectorAll(".lazy-bg");
+
+
+                            const BGImagesObserver = new IntersectionObserver(function(entries, observer) {
+                                entries.forEach(function(entry) {
+                                    if (entry.isIntersecting) {
+                                    const bgImge = entry.target;
+
+                                    bgImge.style = bgImge.dataset.style;
+                                    bgImge.classList.remove("lazy-bg");
+                                    
+                                    BGImagesObserver.unobserve(bgImge);
+                                    }
+                                });
+                                },{
+                                    threshold: .1
+                                });
+
+                                lazyloadBGImages.forEach(function(bgImges) {
+                                    BGImagesObserver.observe(bgImges);
+                            });
                 }
-        
-                document.onreadystatechange = function () {
-                    if (document.readyState === 'interactive') {
-                        loadScript()
-                    }
-                }
-window.onload = function() {
-
-
-        
-// Lazy Loading Images
-const lazyloadImages = document.querySelectorAll(".lazy");
-
-const imageObserver = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-        const image = entry.target;
-        image.src = image.dataset.src;
-        image.classList.remove("lazy");
-        imageObserver.unobserve(image);
-        }
-    });
-    });
-
-    lazyloadImages.forEach(function(image) {
-    imageObserver.observe(image);
-});
-
-
-// Lazy Loading Iframes
-const lazyloadIframes = document.querySelectorAll("iframe");
-
-
-const iframeObserver = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-        const iframe = entry.target;
-        iframe.src = iframe.dataset.src;
-        iframe.classList.remove("lazy");
-        iframeObserver.unobserve(iframe);
-        }
-    });
-    });
-
-    lazyloadIframes.forEach(function(iframe) {
-        iframeObserver.observe(iframe);
-});
-
-    // Lazy Loading BGImages
-    const lazyloadBGImages = document.querySelectorAll(".lazy-bg");
-
-
-const BGImagesObserver = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-        const bgImge = entry.target;
-
-        bgImge.style = bgImge.dataset.style;
-        bgImge.classList.remove("lazy-bg");
-        
-        BGImagesObserver.unobserve(bgImge);
-        }
-    });
-    },{
-        threshold: .1
-      });
-
-    lazyloadBGImages.forEach(function(bgImges) {
-        BGImagesObserver.observe(bgImges);
-});
-}
         </script>
 
     </body>
